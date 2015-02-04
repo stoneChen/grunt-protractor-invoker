@@ -1,6 +1,6 @@
 # grunt-protractor-invoker
 
-> just to invoke global protractor
+> just to invoke global protractor using directConnect
 
 ## Getting Started
 This plugin requires Grunt `~0.4.5`
@@ -25,59 +25,30 @@ In your project's Gruntfile, add a section named `protractor_invoker` to the dat
 ```js
 grunt.initConfig({
   protractor_invoker: {
-    options: {
-      // Task-specific options go here.
-    },
-    your_target: {
-      // Target-specific file lists and/or options go here.
-    },
+    e2e: {
+      configFile: 'test/protractor.conf.js'
+    }
   },
 });
 ```
 
 ### Options
 
-#### options.separator
+#### options.configFile
 Type: `String`
-Default value: `',  '`
 
-A string value that is used to do something with whatever.
-
-#### options.punctuation
-Type: `String`
-Default value: `'.'`
-
-A string value that is used to do something else with whatever else.
+A string value that resolved to your protractor.conf.js.  
+If this value is undefined or '',the result command will be `protractor`,which will find `protractor.conf.js` in current directory.
 
 ### Usage Examples
 
-#### Default Options
-In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
 
 ```js
 grunt.initConfig({
   protractor_invoker: {
-    options: {},
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
-});
-```
-
-#### Custom Options
-In this example, custom options are used to do something else with whatever else. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result in this case would be `Testing: 1 2 3 !!!`
-
-```js
-grunt.initConfig({
-  protractor_invoker: {
-    options: {
-      separator: ': ',
-      punctuation: ' !!!',
-    },
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
+    e2e: {
+      configFile: 'test/protractor.conf.js'
+    }
   },
 });
 ```
@@ -86,4 +57,4 @@ grunt.initConfig({
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
-_(Nothing yet)_
+0.1.0
